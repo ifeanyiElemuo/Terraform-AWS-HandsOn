@@ -17,5 +17,5 @@ output "public_url" {
 
 output "vpc_information" {
   description = "VPC information for environment"
-  value       = "Your ${aws_vpc.vpc.tags.Environment} VPC has an ID of ${aws_vpc.vpc.id}"
+  value       = "Your ${terraform.workspace} VPC has an ID of ${aws_vpc.vpc.id}"
 }

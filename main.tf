@@ -1,6 +1,12 @@
 # Configure the AWS Provider
 provider "aws" {
   region = "eu-west-2"
+  default_tags {
+    tags = {
+      Environment = terraform.workspace
+      Provisioned = "Terraform"
+    }
+  }
 }
 
 # Retrieve the list of AZs in the current AWS region
@@ -20,7 +26,6 @@ resource "aws_vpc" "vpc" {
 
   tags = {
     Name        = var.vpc_name
-    Environment = "demo_environment"
     Terraform   = "true"
     Region      = data.aws_region.current.name
   }
